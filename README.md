@@ -5,6 +5,6 @@ Engineering practices, tools, and research for developing software with AI codin
 
 ### Swift Agentic Quality Engineering
 
-[swift-agentic-quality-engineering](https://github.com/paulstringer/swift-agentic-engineering)
+[swift-agentic-quality-engineering](https://github.com/paulstringer/swift-agentic-quality-engineering)
 
 Quality engineering infrastructure for AI-assisted and autonomous Swift development, including architecture, verification, testing, and automated quality gates.
