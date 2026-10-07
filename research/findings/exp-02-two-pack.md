@@ -26,7 +26,7 @@ Acceptance criteria, checked by the operator in the cleaner's worktree (and agai
 | Human interventions (SwarmForge approval gates, clarification questions) | 0 observed |
 | Operator actions (not interventions) | Coder started by hand twice; cleaner started by hand once; one approval of a permission prompt in exp-01 only (none recorded here). |
 | Wall-clock time | 09:57 brief typed → 13:52 done, about 4 h. Productive time about 16 min: coder started 13:36, commits 13:39, cleaner commit 13:51, done 13:52. |
-| Token / API cost | not measured |
+| Token / API cost | $1.03 all sessions; $0.67 for the two that produced the result (see [benchmarks](benchmarks-first-runs.md)) |
 | Test count / coverage | 9 tests, coverage not measured |
 
 ## What went wrong or surprised us

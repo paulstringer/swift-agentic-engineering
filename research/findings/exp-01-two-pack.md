@@ -20,7 +20,7 @@ Date: 2026-10-05 · Branch: exp-01-two-pack · Backend/model: claude (both roles
 | Human interventions (approvals, clarifications) | 1 approval, given by the operator on a permission prompt after the restart (see below). Not a SwarmForge gate. |
 | Operator actions (not interventions) | Diagnosis ~16:10; coder pane cleared and `claude` relaunched by hand; swarm torn down from the UI |
 | Wall-clock time | ~40 min with the coder not running (15:30–~16:10), then a short restarted attempt, then abort |
-| Token / API cost | not measured |
+| Token / API cost | $0.34 across both agent sessions, no output (see [benchmarks](benchmarks-first-runs.md)) |
 | Test count / coverage | n/a |
 
 ## What went wrong or surprised us
