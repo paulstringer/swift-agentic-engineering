@@ -1,6 +1,6 @@
 # Experiment: dependency graph (import-graph checker)
 
-**Status:** two-pack run completed (exp-02). Four- and six-pack runs not started.
+**Status:** two-pack runs completed (exp-02, exp-03; exp-03 is the clean baseline). Four- and six-pack runs not started.
 
 ## Purpose
 
@@ -42,13 +42,14 @@ The canonical copy is `experiments/brief-import-graph.md` in `swift-agentic-qual
 |---|---|---|---|---|
 | exp-01 | two-pack | 2026-10-05 | Failed: the coder agent never started, no code produced | [exp-01-two-pack](../findings/exp-01-two-pack.md) |
 | exp-02 | two-pack | 2026-10-06 | Completed: all six criteria met, 9 tests, with three manual agent starts | [exp-02-two-pack](../findings/exp-02-two-pack.md) |
+| exp-03 | two-pack | 2026-10-08 | Completed: all six criteria met, 14 tests, no operator actions, brief to done in 2 min 58 s, $0.95 | [exp-03-two-pack](../findings/exp-03-two-pack.md) |
 
 ## What we have learned so far
 
 - **The workload is tractable.** In exp-02 the coder and cleaner produced a correct tool in about 16 productive minutes: SwiftSyntax parsing, a layered fixture with a planted violation, cycle detection with a non-zero exit, and 9 passing tests.
 - **The two-pack has no Swift quality loop.** The cleaner did one structural refactor and ran no mutation, coverage, CRAP, duplication or architecture checks. The pack's tooling is Clojure-shaped (`crap4clj`, `clj-mutate`, `speclj`). So this run is a baseline for what a bare two-role swarm produces, not evidence about quality feedback.
 - **The harness is fragile in ways that distort measurement.**
-  - The coder launch failed in both runs (a notification typed into the pane mid-command), losing about 3.5 hours in exp-02.
+  - The coder launch failed in exp-01, exp-02 and a test launch (the coder's launch line exceeds the terminal's 1,024-character typed-ahead limit while zsh is still starting), losing about 3.5 hours in exp-02. Fixed without changing SwarmForge by launching with a minimal `ZDOTDIR`; exp-03 launched cleanly. See [launch-race-fix](../findings/launch-race-fix.md).
   - The board shows a card as queued or moved even when no agent is running.
   - A user-level permission setting blocks agent commands even with the skip flag, and no project-level setting overrides it. A dedicated config dir is needed.
   - Measures such as wall-clock time and interventions need a liveness check before they mean anything.
@@ -59,4 +60,5 @@ The canonical copy is `experiments/brief-import-graph.md` in `swift-agentic-qual
 1. Choose the Swift quality gates to test, one discipline at a time: architecture rules (the checker this experiment builds is the first candidate), duplication, complexity and coverage, mutation.
 2. Run the same brief under the four-pack and six-pack, with Swift-capable gates wired in.
 3. Compare across conditions on the same measures: criteria met, handoffs, interventions, productive time, and whether gate feedback changed what the agents did.
-4. Resolve the launcher fault or define a standard manual-start procedure so runs are comparable.
+4. ~~Resolve the launcher fault~~ Done: minimal `ZDOTDIR` launch (see above). Re-check on every run with the liveness check.
+5. Run the feature-on-existing-code brief (`brief-depgraph-metrics.md`) from tag `baseline/depgraph-exp03`.
