@@ -42,7 +42,7 @@ Acceptance criteria, checked by the operator in the cleaner's worktree (and agai
 Only weakly. The cleaner made one structural refactor: it split `DepGraph.swift` into `ImportScanner`, `DependencyGraph`, `SourceTree` and `DepGraphCommand`, and the tests still passed. It ran no mutation, coverage, CRAP, duplication or architecture checks on the Swift code, so there was no executable quality feedback to react to. The result shows that a two-pack can produce a correct tool for this brief in about 16 productive minutes, and that its Swift quality loop was absent. It is not evidence for or against quality disciplines as agent feedback. A four- or six-pack run with Swift-capable gates is what the research question needs.
 
 ## Follow-ups
-- Decide how to handle the coder launch race: always restart the coder by hand and record it, or find the cause in the SwarmForge launcher.
+- ~~Decide how to handle the coder launch race~~ Resolved: the cause is the launch line length plus a slow shell start, not the handoff notification; fixed by launching with a minimal `ZDOTDIR`. See [launch-race-fix](launch-race-fix.md). Finding 1 above attributes it to the notification, which this note supersedes.
 - Capture the cleaner transcript for what `swarm_tool.sh require crap4clj` returned, and whether it chose not to run any gates for that reason.
 - Check whether the cleaner changed behaviour in its refactor. Only the existing 9 tests cover it.
 - Decide the Swift gate set (architecture rules, duplication, complexity, mutation) before the four-pack.

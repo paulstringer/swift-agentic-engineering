@@ -24,7 +24,7 @@ Date: 2026-10-05 · Branch: exp-01-two-pack · Backend/model: claude (both roles
 | Test count / coverage | n/a |
 
 ## What went wrong or surprised us
-1. **The coder never started.** The coder pane's launch command was garbled when the "You have new handoff mail" notification was typed into the pane mid-command. The shell was left at `quote>` and `claude` never launched. The queued handoff sat unconsumed.
+1. **The coder never started.** The coder pane's launch command was garbled when the "You have new handoff mail" notification was typed into the pane mid-command. (Superseded: the likely cause is the 1,024-character typed-ahead limit hit by the coder's long launch line while zsh was still starting. See [launch-race-fix](launch-race-fix.md).) The shell was left at `quote>` and `claude` never launched. The queued handoff sat unconsumed.
 2. **The forge looked busy but wasn't.** The board showed a card in the coder lane, windows were open and the daemons were up. Nothing signalled that no agent was running. Only `ps`, `tmux capture-pane` and the handoff folders revealed it. See the Obsidian note "SwarmForge looks busy but isn't - hard to tell what it is doing".
 3. **Permission prompts still appeared despite `--dangerously-skip-permissions`.** After the manual restart the coder hit prompts from the `permissions.blockReadsOutsideWorkingDirectories` setting on commands the shell parser could not analyse (a `cd` to a computed path, a brace with a quote character). This breaks the premise in `setup.md` that the flag makes runs prompt-free and comparable.
 4. The operator restart was a manual intervention in the run, so the run is not a clean sample of the two-pack condition.
